@@ -1,14 +1,25 @@
 import random
+from time import sleep
+
+FILE_NAME = "shuffler.txt"
 
 # EXAMPLE_INPUT = "size=9999"
-EXAMPLE_INPUT = "size=100,seed=892374,algorithm=biased"
+# EXAMPLE_INPUT = "size=100,seed=892374,algorithm=biased"
 
-class DeckShuffler():
-    def __init__(self, size, seed=None):
+
+class DeckShuffler:
+    def __init__(self, size, seed=None, algorithm="random"):
         self.size = size
         self.deck = [i for i in range(self.size)]
         if seed:
             random.seed(seed)
+        self.algorithm = algorithm
+
+    def shuffle(self):
+        if self.algorithm == "biased":
+            self.biased_shuffle()
+        else:
+            self.true_random()
 
     # Each permutation is exactly as likely
     # Fisher Yates Shuffle
@@ -36,15 +47,29 @@ class DeckShuffler():
 
         fixed_points = [i for i in range(len(self.deck)) if self.deck[i] == i]
 
-def main():
-    # This input handling could be better (like using a dictionary)
+    def write_deck(self, file_name):
+        with open(file_name, 'w') as f:
+            f.write(",".join([str(x) for x in self.deck]))
+
+
+def read_request(file_name):
+    while True:
+        with open(file_name, 'r') as f:
+            line = f.readline().strip()
+            if line and line[3] and line[0:4] == "size":
+                return line
+        sleep(.1)
+
+
+def parse_request(request):
+    # This input handling/parsing could be better (like using a dictionary)
     # but it's small enough it's just not worth worrying about (3 inputs)
     size = 10
     seed = None
     algorithm = "random"
     try:
-        input = EXAMPLE_INPUT.split(",")
-        for x in input:
+        arr = request.split(",")
+        for x in arr:
             x = x.split("=")
             if x[0] == "size":
                 size = int(x[1])
@@ -56,13 +81,17 @@ def main():
         print("ERROR IN INPUT HANDLING")
         return
 
-    shuffler = DeckShuffler(size, seed)
-    if algorithm == "biased":
-        shuffler.biased_shuffle()
-    else:
-        shuffler.true_random()
+    return size, seed, algorithm
 
-    print(shuffler.deck)
+def main():
+    while True:
+        request = read_request(FILE_NAME)
+        size, seed, algorithm = parse_request(request)
+
+        shuffler = DeckShuffler(size, seed, algorithm)
+        shuffler.shuffle()
+
+        shuffler.write_deck(FILE_NAME)
 
 if __name__ == '__main__':
     main()
