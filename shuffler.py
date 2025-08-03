@@ -79,19 +79,28 @@ def parse_request(request):
                 algorithm = x[1]
     except:
         print("ERROR IN INPUT HANDLING")
-        return
+        return False, False, False
 
     return size, seed, algorithm
+
+def write_error(file_name):
+    with open(file_name, 'w') as f:
+        f.write("ERROR")
 
 def main():
     while True:
         request = read_request(FILE_NAME)
         size, seed, algorithm = parse_request(request)
 
+        if not size:
+            write_error(FILE_NAME)
+            continue
+
         shuffler = DeckShuffler(size, seed, algorithm)
         shuffler.shuffle()
 
         shuffler.write_deck(FILE_NAME)
+
 
 if __name__ == '__main__':
     main()
