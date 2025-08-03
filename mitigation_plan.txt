@@ -1,0 +1,22 @@
+For which teammate did you implement “Microservice A”?
+Zachary Sherman
+
+What is the current status of the microservice? Hopefully, it’s done!
+Finished
+
+If the microservice isn’t done, which parts aren’t done and when will they be done?
+N/A
+
+How is your teammate going to access your microservice? Should they get your code from GitHub (if so, provide a link to your public or private repo)? Should they run your code locally? Is your microservice hosted somewhere? Etc.
+Download the code directly from GitHub, or download the reduced version (excludes unnecessary files) from the releases page. The code should then be run locally, in your project folder in a separate terminal.
+Release Page: https://github.com/NamesAreHard6600/CS361-Card-Shuffler-Microservice/releases/tag/1.0.0
+Main: https://github.com/NamesAreHard6600/CS361-Card-Shuffler-Microservice/tree/main
+
+If your teammate cannot access/call YOUR microservice, what should they do? Can you be available to help them? What’s your availability?
+Ping me on discord, and we can work it out through text or on a voice call if necessary. My availability is unstable due to vacation, so we'll have to work it out per day.
+
+If your teammate cannot access/call your microservice, by when do they need to tell you? Provide a specific date to ensure they have a clear deadline.
+Preferably, please give me at least 48 hours before the deadline (before the end of 8/9/2025). I will also however follow our preset ground rules and respond within 6 hours of a ping, but may not be able to access a computer to help beyond messaging without more warning.
+
+Is there anything else your teammate needs to know? Anything you’re worried about? Any assumptions you’re making? Any other mitigations / backup plans you want to mention or want to discuss with your teammate?
+We've already discussed everything you need to know on discord, and you've gotten to confirm it looks good.
