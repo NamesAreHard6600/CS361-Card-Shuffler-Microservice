@@ -48,8 +48,10 @@ class DeckShuffler:
         fixed_points = [i for i in range(len(self.deck)) if self.deck[i] == i]
 
     def write_deck(self, file_name):
+        response = ",".join([str(x) for x in self.deck])
+        print(f"Sending Response: {response}")
         with open(file_name, 'w') as f:
-            f.write(",".join([str(x) for x in self.deck]))
+            f.write(response)
 
 
 def read_request(file_name):
@@ -83,13 +85,16 @@ def parse_request(request):
 
     return size, seed, algorithm
 
+
 def write_error(file_name):
     with open(file_name, 'w') as f:
         f.write("ERROR")
 
+
 def main():
     while True:
         request = read_request(FILE_NAME)
+        print(f"Request Received: {request}")
         size, seed, algorithm = parse_request(request)
 
         if not size:
