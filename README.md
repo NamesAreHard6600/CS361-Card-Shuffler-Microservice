@@ -8,7 +8,7 @@ Microservice A for Zachary Sherman - Card Shuffler
 **seed** (int): The random seed to be used for the shuffle. Optional parameter. Random seed if not specified. <br>
 **algorithm** (string - ["random","biased"]): Whether a true random or biased algorithm should be used. True random if not specified. <br>
 
-## Detailed Information
+## Detailed Information:
 The request should be made by deleting the content in the associated text file (shuffler.txt) and filling it with comma separated parameters. 
 Parameters should be specified by first writing the word associated, (size, seed, algorithm), then an equal sign, then the value requested. 
 If there is another parameter, then there should be a comma before the next parameter. 
@@ -22,7 +22,7 @@ size=40,seed=567831 <br>
 size=52,algorithm=random <br>
 size=100,seed=648973,algorithm=biased <br>
 
-## Example Pseudocode:
+## Example Call (Pseudocode):
 ```
 open text file:
     delete all content in text file
@@ -42,14 +42,14 @@ size=10 <br>
 **Response**:  <br>
 2,7,0,1,9,5,3,6,8,4 <br>
 
-## Example Pseudocode:
+## Example Call (Pseudocode):
 ```
-function read_text_file
+function read_text_file():
     while true:
-        open file
+        open file:
             read line from text file
-            if line does not start with "size"
-                return the line
+            if line does not start with "size":
+                return line
         wait short time period
 ```
 
