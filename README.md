@@ -22,11 +22,11 @@ size=40,seed=567831 <br>
 size=52,algorithm=random <br>
 size=100,seed=648973,algorithm=biased <br>
 
-## Example Python Code:
-```py
-request = "size=52"
-with open("shuffler.txt", 'w') as f:
-	f.write(request)
+## Example Pseudocode:
+```
+open text file:
+    delete all content in text file
+    write request to text file
 ```
 
 # How to Receive Data
@@ -42,16 +42,15 @@ size=10 <br>
 **Response**:  <br>
 2,7,0,1,9,5,3,6,8,4 <br>
 
-## Example Python Code:
-```py
-response = ""
-while True:
-    with open(file_name, 'r') as f:
-        line = f.readline().strip()
-        if line and line[3] and line[0:4] != "size":
-            response = line
-            break
-    sleep(0.1)
+## Example Pseudocode:
+```
+function read_text_file
+    while true:
+        open file
+            read line from text file
+            if line does not start with "size"
+                return the line
+        wait short time period
 ```
 
 # UML:
